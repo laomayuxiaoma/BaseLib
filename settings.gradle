@@ -1,1 +1,1 @@
-include ':app', ':base_module:lib'
+include ':app', ':base_module:lib', ':base_module:ui:recyclerviewlib'
