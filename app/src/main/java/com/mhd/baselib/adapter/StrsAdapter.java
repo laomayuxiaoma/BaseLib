@@ -2,6 +2,7 @@ package com.mhd.baselib.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,8 +57,9 @@ public class StrsAdapter extends BaseRecyclerAdapter<String, StrsAdapter.ViewHol
     }
 
     @Override
-    protected void itemClick(Context context, String tagDto) {
-        Toast.makeText(mContext,tagDto,Toast.LENGTH_SHORT).show();
+    protected void itemClick(Context context, String s, int position) {
+        Log.e("TTTTTTTTTTTTTTT",position+"|||");
+        Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

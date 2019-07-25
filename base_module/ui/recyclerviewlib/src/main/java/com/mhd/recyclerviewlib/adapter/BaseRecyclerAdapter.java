@@ -1,14 +1,13 @@
 package com.mhd.recyclerviewlib.adapter;
 
 import android.content.Context;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.mhd.recyclerviewlib.util.HeaderCount;
 import com.mhd.recyclerviewlib.util.OnSingleClickListener;
 import com.mhd.recyclerviewlib.util.SingleClickUtil;
 
@@ -19,9 +18,12 @@ import java.util.List;
  */
 
 public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
+
     protected List<T> list;
     private int itemLayout;
     protected int duration = 2;
+
+    private HeaderCount mHeaderCount;
 
     public BaseRecyclerAdapter(List<T> list, int itemLayout) {
         this.list = list;
@@ -39,36 +41,26 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
             recyclerViewHolder = holder;
         }
 
+        SingleClickUtil.setOnSingleClickListener(view, duration, new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                int position = recyclerViewHolder.getAdapterPosition() - getHeaderCount();
+                if (position < 0) {
+                    return;
+                }
+                if (position < list.size()) {
+                    itemClick(parent.getContext(), list.get(position), position);
+                } else {
+                    itemClick(parent.getContext(), null, position);
+                }
+            }
+        });
+
         return recyclerViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final VH holder, final int position) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-            if (!holder.itemView.hasOnClickListeners()){
-                SingleClickUtil.setOnSingleClickListener(holder.itemView, duration, new OnSingleClickListener() {
-                    @Override
-                    public void onSingleClick(View view) {
-                        if (position < list.size()) {
-                            itemClick(holder.itemView.getContext(), list.get(position));
-                        } else {
-                            itemClick(holder.itemView.getContext(), null);
-                        }
-                    }
-                });
-            }
-        }else {
-            SingleClickUtil.setOnSingleClickListener(holder.itemView, duration, new OnSingleClickListener() {
-                @Override
-                public void onSingleClick(View view) {
-                    if (position < list.size()) {
-                        itemClick(holder.itemView.getContext(), list.get(position));
-                    } else {
-                        itemClick(holder.itemView.getContext(), null);
-                    }
-                }
-            });
-        }
         if (position < list.size()) {
             bindDate(holder, list.get(position), position);
         } else {
@@ -85,8 +77,10 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     }
 
     protected abstract VH createMHDViewHolder(Context mContext, View itemView, int viewType);
+
     protected abstract void bindDate(VH holder, T t, int position);
-    protected abstract void itemClick(Context context, T t);
+
+    protected abstract void itemClick(Context context, T t, int position);
 
     public void addList(List<T> addList) {
         this.list = addList;
@@ -97,4 +91,14 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         return list;
     }
 
+    private int getHeaderCount() {
+        if (mHeaderCount == null) {
+            return 0;
+        }
+        return mHeaderCount.getHeaderCount();
+    }
+
+    public void setmHeaderCount(HeaderCount mHeaderCount) {
+        this.mHeaderCount = mHeaderCount;
+    }
 }

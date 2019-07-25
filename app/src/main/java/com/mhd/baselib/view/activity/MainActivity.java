@@ -2,13 +2,14 @@ package com.mhd.baselib.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.adapter.StrsAdapter;
+import com.mhd.baselib.dialog.TestDialog;
 import com.mhd.baselib.view.view.FooterOne;
 import com.mhd.baselib.view.view.HeaderOne;
 import com.mhd.baselib.view.view.HeaderTwo;
+import com.mhd.baseui.dialog.GeneralDlg;
 import com.mhd.recyclerviewlib.SimpleRecycleView;
 
 import java.util.ArrayList;
@@ -20,21 +21,29 @@ public class MainActivity extends AppCompatActivity {
     private StrsAdapter mStrsAdapter;
     private List<String> mDtos = new ArrayList<>();
 
+    //测试使用
+    private int i = 0;
+    private int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //        try {
-        //            Thread.sleep(6000);
-        //        } catch (InterruptedException e) {
-        //            e.printStackTrace();
-        //        }
+        GeneralDlg dlg = new GeneralDlg.Builder().setTitle("标题").setTitleCenter()
+                .setMessage("测试测试测试测试测试测试测试测试测试测试测试测试测试测试" +
+                        "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试")
+                .setMessageLeft().create();
+        dlg.showDialog(this);
 
+        TestDialog testDialog = new TestDialog();
+        testDialog.showDialog(this);
 
         initView();
         initData();
         initAdapter();
+
+        //测试
         rvList.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -48,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 } else {
                     if (i < 5) {
-//                        rvList.addHeaderView(HeaderTwo.class);
                         if (i % 3 == 0) {
                             rvList.addHeaderView(HeaderOne.class);
                         } else if (i % 3 == 1) {
@@ -59,18 +67,13 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         rvList.addFooterView(FooterOne.class);
                     }
+                    rvList.getAdapter().notifyDataSetChanged();
                 }
-
                 count++;
-                //                rvList.getAdapter().notifyDataSetChanged();
-                rvList.requestLayout();
                 rvList.postDelayed(this, 1000);
             }
         }, 2000);
     }
-
-    int i = 0;
-    int count = 0;
 
     private void initView() {
         rvList = findViewById(R.id.rv_list);

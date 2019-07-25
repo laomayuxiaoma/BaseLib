@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.mhd.recyclerviewlib.R;
 import com.mhd.recyclerviewlib.stateView.StateView;
+import com.mhd.recyclerviewlib.util.HeaderCount;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -21,7 +22,7 @@ import java.util.Set;
  * @Date 2019/7/24 17:16
  * @Description: 当recycleview添加顶部或底部布局时使用
  */
-public class HeaderAndFooterAdapter extends RecyclerView.Adapter {
+public class HeaderAndFooterAdapter extends RecyclerView.Adapter implements HeaderCount {
 
     public static final int BASE_ITEM_TYPE_HEADER = 100000;
     public static final int BASE_ITEM_TYPE_FOOTER = 200000;
@@ -250,6 +251,11 @@ public class HeaderAndFooterAdapter extends RecyclerView.Adapter {
 
     public int getFootersCount() {
         return mFooterViews.size();
+    }
+
+    @Override
+    public int getHeaderCount() {
+        return mHeaderViews.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

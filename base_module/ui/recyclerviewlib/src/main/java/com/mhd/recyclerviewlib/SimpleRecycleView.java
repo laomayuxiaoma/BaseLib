@@ -7,7 +7,9 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 
+import com.mhd.recyclerviewlib.adapter.BaseRecyclerAdapter;
 import com.mhd.recyclerviewlib.adapter.HeaderAndFooterAdapter;
 
 /**
@@ -58,10 +60,12 @@ public class SimpleRecycleView extends RecyclerView {
     public void setAdapter(@Nullable Adapter adapter) {
         if (isStartUsingHeaderOrFooter && mHeaderAndFooterAdapter == null) {
             mHeaderAndFooterAdapter = new HeaderAndFooterAdapter(getContext(), adapter);
+            reInitAdapter(adapter);
         }
 
         if (mHeaderAndFooterAdapter != null) {
             mHeaderAndFooterAdapter.setmInnerAdapter(adapter);
+            reInitAdapter(adapter);
         }
 
         super.setAdapter(mHeaderAndFooterAdapter == null ? adapter : mHeaderAndFooterAdapter);
@@ -132,11 +136,19 @@ public class SimpleRecycleView extends RecyclerView {
         isStartUsingHeaderOrFooter = true;
         if (mHeaderAndFooterAdapter == null) {
             mHeaderAndFooterAdapter = new HeaderAndFooterAdapter(getContext(), getAdapter());
+            reInitAdapter(getAdapter());
         }
         if (getAdapter() != null) {
             super.setAdapter(mHeaderAndFooterAdapter);
         }
         return this;
+    }
+
+    private void reInitAdapter(Adapter adapter) {
+        Log.e("TTTTTTTTTT",(adapter instanceof BaseRecyclerAdapter)+"||"+adapter);
+        if (adapter instanceof BaseRecyclerAdapter) {
+            ((BaseRecyclerAdapter) adapter).setmHeaderCount(mHeaderAndFooterAdapter);
+        }
     }
 
 }

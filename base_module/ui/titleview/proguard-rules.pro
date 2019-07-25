@@ -20,15 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-
-#-keep class com.example.muheda.mhdsystemkit.systemUI.commonView.* { *; }
-
-#-keep class  * extends com.example.muheda.mhdsystemkit.systemUI.stateView.BaseView { *; }
-
--keepclassmembers class * extends com.mhd.recyclerviewlib.stateView.BaseView {
- <fields>;
- private void handleCombination();}
-
- -keepclassmembers com.mhd.recyclerviewlib.stateView.BaseView {
-  <fields>;
-  private void handleCombination();}
+#-keep class com.muheda.customtitleview.**{*;}
