@@ -1,6 +1,7 @@
 package com.mhd.baselib.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mhd.baselib.R;
+import com.mhd.baselib.view.activity.SearchDemo;
 import com.mhd.recyclerviewlib.adapter.BaseRecyclerAdapter;
 
 import java.util.HashMap;
@@ -46,6 +48,9 @@ public class StrsAdapter extends BaseRecyclerAdapter<String, StrsAdapter.ViewHol
     protected void itemClick(Context context, String s, int position) {
         Log.e("TTTTTTTTTTTTTTT",position+"|||");
         Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
+        if ("搜索".equals(s)){
+            context.startActivity(new Intent().setClass(context, SearchDemo.class));
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

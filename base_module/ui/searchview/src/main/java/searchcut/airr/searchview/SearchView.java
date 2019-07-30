@@ -35,7 +35,6 @@ public class SearchView extends LinearLayout {
     // 搜索框组件
     private EditText et_search; // 搜索按键
     private LinearLayout search_block; // 搜索框布局
-    private ImageView searchBack; // 返回按键
 
     // 数据库变量
     // 用于存放历史搜索记录

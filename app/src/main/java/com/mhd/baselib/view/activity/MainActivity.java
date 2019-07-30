@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initData();
         initAdapter();
-        
+
         //测试
 //        rvList.postDelayed(new Runnable() {
 //            @Override
