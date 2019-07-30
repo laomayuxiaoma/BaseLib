@@ -3,11 +3,21 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/base_module" />
+            <option value="$PROJECT_DIR$/base_module/Lib" />
+            <option value="$PROJECT_DIR$/base_module/ui" />
+            <option value="$PROJECT_DIR$/base_module/ui/recyclerviewlib" />
+            <option value="$PROJECT_DIR$/base_module/ui/searchview" />
+            <option value="$PROJECT_DIR$/base_module/ui/systemui" />
+            <option value="$PROJECT_DIR$/base_module/ui/titleview" />
+          </set>
+        </option>
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>

@@ -1,2 +1,2 @@
 include ':app', ':base_module:lib', ':base_module:ui:recyclerviewlib',
-        ':base_module:ui:titleview', ':base_module:ui:systemui'
+        ':base_module:ui:titleview', ':base_module:ui:systemui', ':base_module:ui:searchview'

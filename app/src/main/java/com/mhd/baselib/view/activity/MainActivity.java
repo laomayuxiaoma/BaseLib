@@ -15,6 +15,8 @@ import com.mhd.recyclerviewlib.SimpleRecycleView;
 import java.util.ArrayList;
 import java.util.List;
 
+import searchcut.airr.searchview.SearchView;
+
 public class MainActivity extends AppCompatActivity {
 
     private SimpleRecycleView rvList;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         initData();
         initAdapter();
 
+        SearchView
         //测试
         rvList.postDelayed(new Runnable() {
             @Override

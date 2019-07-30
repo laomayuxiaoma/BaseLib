@@ -34,4 +34,5 @@ dependencies {
     api project(path: ':base_module:ui:recyclerviewlib')
     api project(path: ':base_module:ui:titleview')
     api project(path: ':base_module:ui:systemui')
+    api project(path: ':base_module:ui:searchview')
 }
