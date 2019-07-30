@@ -30,49 +30,49 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GeneralDlg dlg = new GeneralDlg.Builder().setTitle("标题").setTitleCenter()
-                .setMessage("测试测试测试测试测试测试测试测试测试测试测试测试测试测试" +
-                        "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试")
-                .setMessageLeft().create();
-        dlg.showDialog(this);
-
-        TestDialog testDialog = new TestDialog();
-        testDialog.showDialog(this);
+//        GeneralDlg dlg = new GeneralDlg.Builder().setTitle("标题").setTitleCenter()
+//                .setMessage("测试测试测试测试测试测试测试测试测试测试测试测试测试测试" +
+//                        "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试")
+//                .setMessageLeft().create();
+//        dlg.showDialog(this);
+//
+//        TestDialog testDialog = new TestDialog();
+//        testDialog.showDialog(this);
 
         initView();
         initData();
         initAdapter();
 
         //测试
-        rvList.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                i = count % 9;
-                int j = count / 9;
-                if (j % 2 == 0) {
-                    if (i < 5) {
-                        rvList.removeHeaderView(0);
-                    } else {
-                        rvList.removeFooterView(0);
-                    }
-                } else {
-                    if (i < 5) {
-                        if (i % 3 == 0) {
-                            rvList.addHeaderView(HeaderOne.class);
-                        } else if (i % 3 == 1) {
-                            rvList.addHeaderView(HeaderTwo.class);
-                        } else {
-                            rvList.addHeaderView(R.layout.view_header_one);
-                        }
-                    } else {
-                        rvList.addFooterView(FooterOne.class);
-                    }
-                    rvList.getAdapter().notifyDataSetChanged();
-                }
-                count++;
-                rvList.postDelayed(this, 1000);
-            }
-        }, 2000);
+//        rvList.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                i = count % 9;
+//                int j = count / 9;
+//                if (j % 2 == 0) {
+//                    if (i < 5) {
+//                        rvList.removeHeaderView(0);
+//                    } else {
+//                        rvList.removeFooterView(0);
+//                    }
+//                } else {
+//                    if (i < 5) {
+//                        if (i % 3 == 0) {
+//                            rvList.addHeaderView(HeaderOne.class);
+//                        } else if (i % 3 == 1) {
+//                            rvList.addHeaderView(HeaderTwo.class);
+//                        } else {
+//                            rvList.addHeaderView(R.layout.view_header_one);
+//                        }
+//                    } else {
+//                        rvList.addFooterView(FooterOne.class);
+//                    }
+//                    rvList.getAdapter().notifyDataSetChanged();
+//                }
+//                count++;
+//                rvList.postDelayed(this, 1000);
+//            }
+//        }, 2000);
     }
 
     private void initView() {
@@ -80,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        mDtos.add("测试1");
-        mDtos.add("测试2");
-        mDtos.add("测试3");
-        mDtos.add("测试4");
+        mDtos.add("搜索");
+        mDtos.add("弹框");
+        mDtos.add("TextView");
+        mDtos.add("ImageView");
         mDtos.add("测试5");
         mDtos.add("测试6");
         mDtos.add("测试7");
