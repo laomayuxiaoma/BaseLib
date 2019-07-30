@@ -32,19 +32,6 @@ public class StrsAdapter extends BaseRecyclerAdapter<String, StrsAdapter.ViewHol
 
     }
 
-    //    @Override
-    //    public int getItemViewType(int position) {
-    //        if (list == null || list.size() == 0) {
-    //            return super.getItemViewType(position);
-    //        } else {
-    //            try {
-    //                return Integer.valueOf(list.get(position).getmViewTag());
-    //            } catch (Exception e) {
-    //                return super.getItemViewType(position);
-    //            }
-    //        }
-    //    }
-
     @Override
     protected ViewHolder createMHDViewHolder(Context mContext, View itemView, int viewType) {
         return new ViewHolder(itemView, String.valueOf(viewType));
@@ -52,7 +39,6 @@ public class StrsAdapter extends BaseRecyclerAdapter<String, StrsAdapter.ViewHol
 
     @Override
     protected void bindDate(ViewHolder holder, String str, int position) {
-        //        holder.mStateView.setData(String.valueOf(getItemViewType(position)), configViewMap, tagDto.getCarData());
         holder.tvStr.setText(str + "");
     }
 
@@ -74,7 +60,6 @@ public class StrsAdapter extends BaseRecyclerAdapter<String, StrsAdapter.ViewHol
         private void initView(View itemView, String viewType) {
             tvStr = itemView.findViewById(R.id.tv_str);
             mContext = itemView.getContext();
-            //            mStateView.setData(viewType, configViewMap);
         }
     }
 }
