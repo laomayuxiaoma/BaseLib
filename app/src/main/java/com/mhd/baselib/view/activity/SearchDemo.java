@@ -59,6 +59,6 @@ public class SearchDemo extends AppCompatActivity {
         HashMap<String, Class> hashMap = new HashMap<>();
         hashMap.put("1", CustomView.class);
 
-//        searchView.setOtherView(hashMap);
+        searchView.setOtherView(hashMap);
     }
 }

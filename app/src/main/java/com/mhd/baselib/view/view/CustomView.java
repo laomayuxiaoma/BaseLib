@@ -6,9 +6,10 @@ import android.view.ViewGroup;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.databinding.ViewCustomBinding;
-import com.mhd.recyclerviewlib.stateView.BaseView;
 
 import java.util.HashMap;
+
+import searchcut.airr.stateview.BaseView;
 
 
 /**
