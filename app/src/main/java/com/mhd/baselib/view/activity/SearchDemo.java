@@ -7,11 +7,11 @@ import com.mhd.baselib.R;
 import com.mhd.baselib.view.view.CustomView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import searchcut.airr.searchview.ICallBack;
-import searchcut.airr.searchview.SearchView;
+import searchcut.airr.searchview.model.SearchDataDto;
+import searchcut.airr.searchview.view.SearchView;
 
 
 public class SearchDemo extends AppCompatActivity {
@@ -55,10 +55,6 @@ public class SearchDemo extends AppCompatActivity {
 
         searchView.setFuzzyData(list);
 
-
-        HashMap<String, Class> hashMap = new HashMap<>();
-        hashMap.put("1", CustomView.class);
-
-        searchView.setOtherView(hashMap);
+        searchView.setOtherView("1", CustomView.class, new SearchDataDto()).setOtherView("2", CustomView.class, new SearchDataDto());
     }
 }

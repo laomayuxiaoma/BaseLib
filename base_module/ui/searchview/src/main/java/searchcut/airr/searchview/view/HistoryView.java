@@ -1,4 +1,4 @@
-package searchcut.airr.searchview;
+package searchcut.airr.searchview.view;
 
 import android.content.Context;
 import android.view.View;
@@ -9,7 +9,10 @@ import com.donkingliang.labels.LabelsView;
 
 import java.util.HashMap;
 
+import searchcut.airr.searchview.ICallBack;
+import searchcut.airr.searchview.R;
 import searchcut.airr.searchview.databinding.ItemDataBinding;
+import searchcut.airr.searchview.model.SearchDataDto;
 import searchcut.airr.stateview.BaseView;
 
 /**

@@ -9,6 +9,7 @@ import com.mhd.baselib.databinding.ViewCustomBinding;
 
 import java.util.HashMap;
 
+import searchcut.airr.searchview.model.SearchModelDto;
 import searchcut.airr.stateview.BaseView;
 
 
@@ -16,7 +17,7 @@ import searchcut.airr.stateview.BaseView;
  * @author wangfei
  * @date 2019/7/30.
  */
-public class CustomView extends BaseView<Object, ViewCustomBinding> {
+public class CustomView extends BaseView<SearchModelDto, ViewCustomBinding> {
     public CustomView(Context context, Object data, ViewGroup parent) {
         super(context, data, parent);
     }
@@ -33,11 +34,18 @@ public class CustomView extends BaseView<Object, ViewCustomBinding> {
 
     @Override
     protected void initListener(View view, boolean isUpdate) {
-
+        mBinding.text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (data != null && data.getCallBack() != null) {
+                    data.getCallBack().SearchAciton("点击成功");
+                }
+            }
+        });
     }
 
     @Override
-    protected BaseView.ConbinationBuilder combinationViewBuilder() {
+    protected ConbinationBuilder combinationViewBuilder() {
         return null;
     }
 

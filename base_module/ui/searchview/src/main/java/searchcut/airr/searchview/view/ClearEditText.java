@@ -1,4 +1,4 @@
-package searchcut.airr.searchview;
+package searchcut.airr.searchview.view;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -6,9 +6,10 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import searchcut.airr.searchview.R;
 
 
-public class EditText_Clear extends android.support.v7.widget.AppCompatEditText {
+public class ClearEditText extends android.support.v7.widget.AppCompatEditText {
 
 
     /**
@@ -16,18 +17,18 @@ public class EditText_Clear extends android.support.v7.widget.AppCompatEditText 
      */
     private Drawable clearDrawable,searchDrawable;
 
-    public EditText_Clear(Context context) {
+    public ClearEditText(Context context) {
         super(context);
         init();
         // 初始化该组件时，对EditText_Clear进行初始化 ->>步骤2
     }
 
-    public EditText_Clear(Context context, AttributeSet attrs) {
+    public ClearEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public EditText_Clear(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ClearEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

@@ -5,17 +5,13 @@ import android.os.Bundle;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.adapter.StrsAdapter;
-import com.mhd.baselib.dialog.TestDialog;
 import com.mhd.baselib.view.view.FooterOne;
 import com.mhd.baselib.view.view.HeaderOne;
 import com.mhd.baselib.view.view.HeaderTwo;
-import com.mhd.baseui.dialog.GeneralDlg;
 import com.mhd.recyclerviewlib.SimpleRecycleView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import searchcut.airr.searchview.SearchView;
 
 public class MainActivity extends AppCompatActivity {
 

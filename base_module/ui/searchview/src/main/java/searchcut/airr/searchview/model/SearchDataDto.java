@@ -1,15 +1,17 @@
-package searchcut.airr.searchview;
+package searchcut.airr.searchview.model;
 
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import searchcut.airr.searchview.ICallBack;
+
 /**
  * @author wangfei
  * @date 2019/7/24.
  */
-public class SearchDataDto {
+public class SearchDataDto extends SearchModelDto {
     public static String HISTORY_RECORD = "0";
 
     private List<SearchItem> datas = new ArrayList<>();

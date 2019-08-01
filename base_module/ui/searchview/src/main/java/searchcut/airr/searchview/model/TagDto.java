@@ -1,4 +1,4 @@
-package searchcut.airr.stateview;
+package searchcut.airr.searchview.model;
 
 /**
  * @author zhangming

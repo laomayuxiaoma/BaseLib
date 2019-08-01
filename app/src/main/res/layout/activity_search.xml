@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <searchcut.airr.searchview.SearchView
+    <searchcut.airr.searchview.view.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:searchBlockColor="#ffffff"
+        app:searchBackground="#ffffff"
         app:searchBlockHeight="150"
         app:textColorSearch="#9b9b9b"
         app:textHintSearch="输入查询关键字"

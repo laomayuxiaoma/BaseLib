@@ -1,6 +1,4 @@
-package searchcut.airr.searchview;
-
-import searchcut.airr.stateview.TagDto;
+package searchcut.airr.searchview.model;
 
 /**
  * @author wangfei
@@ -8,23 +6,23 @@ import searchcut.airr.stateview.TagDto;
  */
 public class SearchItem extends TagDto {
 
-    private SearchDataDto searchDataDto;
+    private SearchModelDto searchDataDto;
 
     @Override
     public void createTag() {
 
     }
 
-    public SearchItem(String mViewTag, SearchDataDto searchDataDto) {
+    public SearchItem(String mViewTag, SearchModelDto searchDataDto) {
         this.searchDataDto = searchDataDto;
         this.mViewTag = mViewTag;
     }
 
-    public SearchDataDto getSearchDataDto() {
+    public SearchModelDto getSearchDataDto() {
         return searchDataDto;
     }
 
-    public void setSearchDataDto(SearchDataDto searchDataDto) {
+    public void setSearchDataDto(SearchModelDto searchDataDto) {
         this.searchDataDto = searchDataDto;
     }
 }

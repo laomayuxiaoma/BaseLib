@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:paddingRight="10dp">
 
-        <searchcut.airr.searchview.EditText_Clear
+        <searchcut.airr.searchview.view.ClearEditText
             android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
