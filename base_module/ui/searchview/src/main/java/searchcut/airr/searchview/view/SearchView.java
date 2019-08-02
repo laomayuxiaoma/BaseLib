@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -37,7 +38,7 @@ public class SearchView extends LinearLayout {
     private Context context;
 
     // 搜索框组件
-    private EditText et_search; // 搜索布局
+    private ClearEditText et_search; // 搜索布局
     private LinearLayout search_block; // 搜索框布局
 
     // 数据库变量
@@ -53,6 +54,7 @@ public class SearchView extends LinearLayout {
     private Float textSizeSearch;
     private int textColorSearch;
     private String textHintSearch;
+    private int searchLeftImg;
 
     // 2. 搜索框设置：高度 & 颜色
     private int searchBlockHeight;
@@ -127,7 +129,10 @@ public class SearchView extends LinearLayout {
         topBackground = typedArray.getColor(R.styleable.Search_View_topBackground, defaultTopColor);
         // 下方搜索条背景
         bottomBackground = typedArray.getColor(R.styleable.Search_View_topBackground, Color.parseColor("#00000000")); // 默认颜色 = 透明
-
+        // 模糊搜索是否开启
+        fuzzyShow = typedArray.getBoolean(R.styleable.Search_View_fuzzyShow, true);
+        // 更换搜索框左侧图标
+        searchLeftImg = typedArray.getResourceId(R.styleable.Search_View_searchLeftImg, R.drawable.search);
 
         // 释放资源
         typedArray.recycle();
@@ -247,11 +252,14 @@ public class SearchView extends LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.search_layout, this);
 
         // 2. 绑定搜索框EditText
-        et_search = (EditText) findViewById(R.id.et_search);
+        et_search = (ClearEditText) findViewById(R.id.et_search);
         et_search.setTextSize(textSizeSearch);
         et_search.setTextColor(textColorSearch);
         et_search.setHint(textHintSearch);
         et_search.setBackgroundColor(searchBackground);
+        Drawable drawable = getResources().getDrawable(searchLeftImg);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        et_search.setCompoundDrawables(drawable, null, null, null);
 
         // 3. 搜索框背景颜色
         search_block = (LinearLayout) findViewById(R.id.search_block);
@@ -287,7 +295,6 @@ public class SearchView extends LinearLayout {
     }
 
     /**
-     * 关注1
      * 模糊查询数据 & 显示到ListView列表上
      */
     private void queryFuzzyData(String tempName) {
@@ -344,16 +351,13 @@ public class SearchView extends LinearLayout {
     }
 
     private void toSearchChangeUI(String string) {
-        if (mCallBack != null) {
-            mCallBack.SearchAciton(string);
-        }
         et_search.setText(string);
         rv_date.setVisibility(GONE);
         toSearch();
     }
 
     /**
-     * 关注2：清空数据库
+     * 清空数据库
      */
     private void deleteData() {
 
@@ -363,7 +367,6 @@ public class SearchView extends LinearLayout {
     }
 
     /**
-     * 关注3
      * 检查数据库中是否已经有该搜索记录
      */
     private boolean hasData(String tempName) {
@@ -375,7 +378,6 @@ public class SearchView extends LinearLayout {
     }
 
     /**
-     * 关注4
      * 插入数据到数据库，即写入搜索字段到历史搜索记录
      */
     private void insertData(String tempName) {
@@ -463,8 +465,8 @@ public class SearchView extends LinearLayout {
      * @param view
      * @return
      */
-    public SearchView setOtherView(String key, Class view) {
-        setOtherView(key, view, null);
+    public SearchView addOtherView(String key, Class view) {
+        addOtherView(key, view, null);
         return this;
     }
 
@@ -477,7 +479,7 @@ public class SearchView extends LinearLayout {
      * @return
      */
 
-    public SearchView setOtherView(String key, Class view, SearchModelDto data) {
+    public SearchView addOtherView(String key, Class view, SearchModelDto data) {
         dataAdapter.initMap(key, view);
         if (data != null) {
             data.setCallBack(new ICallBack() {
@@ -490,6 +492,15 @@ public class SearchView extends LinearLayout {
         listOtherData.add(new SearchItem(key, data));
         dataAdapter.addList(searchDataDto.getViews(listOtherData));
         return this;
+    }
+
+    /**
+     * 获取搜索控件
+     *
+     * @return
+     */
+    public ClearEditText getEditText() {
+        return et_search;
     }
 
     private void replaceView(int id, View view) {

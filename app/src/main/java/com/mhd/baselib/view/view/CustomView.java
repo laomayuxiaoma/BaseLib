@@ -37,9 +37,7 @@ public class CustomView extends BaseView<SearchModelDto, ViewCustomBinding> {
         mBinding.text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data != null && data.getCallBack() != null) {
-                    data.getCallBack().SearchAciton("点击成功");
-                }
+                searchAciton("点击成功");
             }
         });
     }

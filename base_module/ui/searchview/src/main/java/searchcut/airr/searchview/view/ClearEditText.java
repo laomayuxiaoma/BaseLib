@@ -15,7 +15,7 @@ public class ClearEditText extends android.support.v7.widget.AppCompatEditText {
     /**
      * 步骤1：定义左侧搜索图标 & 一键删除图标
      */
-    private Drawable clearDrawable,searchDrawable;
+    private Drawable clearDrawable, searchDrawable;
 
     public ClearEditText(Context context) {
         super(context);
@@ -113,6 +113,13 @@ public class ClearEditText extends android.support.v7.widget.AppCompatEditText {
         return super.onTouchEvent(event);
     }
 
+    /**
+     * 更换清除按钮
+     * @param res
+     */
+    public void setClearIcon(int res) {
+        clearDrawable = getResources().getDrawable(res);
+    }
 
 }
 

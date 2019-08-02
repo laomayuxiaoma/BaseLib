@@ -53,7 +53,7 @@ public class HistoryView extends BaseView<SearchDataDto, ItemDataBinding> {
         mBinding.lvData.setOnLabelClickListener(new LabelsView.OnLabelClickListener() {
             @Override
             public void onLabelClick(TextView label, Object data, int position) {
-                mCallBack.SearchAciton((String) data);
+                searchAciton((String) data);
             }
         });
     }

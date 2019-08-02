@@ -4,13 +4,18 @@ package searchcut.airr.searchview.model;
  * @author wangfei
  * @date 2019/7/29.
  */
-public class SearchItem extends TagDto {
+public class SearchItem {
 
     private SearchModelDto searchDataDto;
+    private String mViewTag;
 
-    @Override
-    public void createTag() {
 
+    public String getmViewTag() {
+        return mViewTag;
+    }
+
+    public void setmViewTag(String mViewTag) {
+        this.mViewTag = mViewTag;
     }
 
     public SearchItem(String mViewTag, SearchModelDto searchDataDto) {

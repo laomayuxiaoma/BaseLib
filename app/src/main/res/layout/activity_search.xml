@@ -14,4 +14,7 @@
         app:textColorSearch="#9b9b9b"
         app:textHintSearch="输入查询关键字"
         app:textSizeSearch="5dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

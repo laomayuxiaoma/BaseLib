@@ -2,6 +2,7 @@ package com.mhd.baselib.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.view.view.CustomView;
@@ -34,7 +35,7 @@ public class SearchDemo extends AppCompatActivity {
         searchView.setOnClickSearch(new ICallBack() {
             @Override
             public void SearchAciton(String string) {
-                System.out.println("我收到了" + string);
+                Toast.makeText(SearchDemo.this,"我收到了" + string,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -45,16 +46,17 @@ public class SearchDemo extends AppCompatActivity {
         list.add("你");
         list.add("哈哈六六六");
         list.add("我");
-        list.add("我好");
-        list.add("我");
-        list.add("我好");
-        list.add("我");
-        list.add("我好");
-        list.add("我");
-        list.add("我好");
+        list.add("aaa");
+        list.add("abc");
+        list.add("abcdfghr");
+        list.add("bdbjdbcjs");
+        list.add("cdslmcdl");
+        list.add("dkjflksflas");
+        list.add("efdfdfdlk");
+
 
         searchView.setFuzzyData(list);
 
-        searchView.setOtherView("1", CustomView.class, new SearchDataDto()).setOtherView("2", CustomView.class, new SearchDataDto());
+        searchView.addOtherView("1", CustomView.class, new SearchDataDto()).addOtherView("2", CustomView.class, new SearchDataDto());
     }
 }

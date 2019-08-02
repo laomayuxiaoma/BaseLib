@@ -8,5 +8,7 @@
         <attr name="searchBackground" />
         <attr name="topBackground" />
         <attr name="bottomBackground" />
+        <attr name="fuzzyShow" format="boolean"/>
+        <attr name="searchLeftImg" format="reference"/>
     </declare-styleable>
 </resources>
