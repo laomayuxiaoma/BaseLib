@@ -7,11 +7,12 @@ import android.view.View;
 
 import java.util.HashMap;
 
-import searchcut.airr.searchview.view.HistoryView;
 import searchcut.airr.searchview.R;
-import searchcut.airr.searchview.model.SearchDataDto;
 import searchcut.airr.searchview.model.SearchItem;
+import searchcut.airr.searchview.view.HistoryView;
 import searchcut.airr.stateview.StateView;
+
+import static searchcut.airr.searchview.helper.AssembleDataUtil.HISTORY_RECORD;
 
 /**
  * @author wangfei
@@ -26,7 +27,7 @@ public class DataAdapter extends BaseRecyclerAdapter<SearchItem, DataAdapter.Vie
     }
 
     public void initMap(String key, Class view) {
-        configViewMap.put(SearchDataDto.HISTORY_RECORD, HistoryView.class);
+        configViewMap.put(HISTORY_RECORD, HistoryView.class);
         if (!TextUtils.isEmpty(key) && view != null) {
             configViewMap.put(key, view);
         }

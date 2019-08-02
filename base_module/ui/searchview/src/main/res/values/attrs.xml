@@ -10,5 +10,6 @@
         <attr name="bottomBackground" />
         <attr name="fuzzyShow" format="boolean"/>
         <attr name="searchLeftImg" format="reference"/>
+        <attr name="currentPageShow" format="boolean"/>
     </declare-styleable>
 </resources>

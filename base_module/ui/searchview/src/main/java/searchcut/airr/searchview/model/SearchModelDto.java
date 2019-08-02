@@ -1,6 +1,6 @@
 package searchcut.airr.searchview.model;
 
-import searchcut.airr.searchview.ICallBack;
+import searchcut.airr.searchview.icallback.ICallBack;
 
 /**
  * @author wangfei

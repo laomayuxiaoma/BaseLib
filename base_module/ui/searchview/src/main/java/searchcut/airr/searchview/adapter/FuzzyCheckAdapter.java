@@ -4,10 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import searchcut.airr.searchview.ICallBack;
+import searchcut.airr.searchview.icallback.ICallBack;
 import searchcut.airr.searchview.R;
-import searchcut.airr.searchview.adapter.BaseRecyclerAdapter;
-import searchcut.airr.searchview.adapter.BaseRecyclerViewHolder;
 
 /**
  * @author wangfei

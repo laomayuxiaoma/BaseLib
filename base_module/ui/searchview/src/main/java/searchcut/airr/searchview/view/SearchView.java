@@ -15,7 +15,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,11 +22,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import searchcut.airr.searchview.ICallBack;
 import searchcut.airr.searchview.R;
-import searchcut.airr.searchview.RecordSQLiteOpenHelper;
 import searchcut.airr.searchview.adapter.DataAdapter;
 import searchcut.airr.searchview.adapter.FuzzyCheckAdapter;
+import searchcut.airr.searchview.helper.AssembleDataUtil;
+import searchcut.airr.searchview.helper.RecordSQLiteOpenHelper;
+import searchcut.airr.searchview.icallback.ICallBack;
 import searchcut.airr.searchview.model.SearchDataDto;
 import searchcut.airr.searchview.model.SearchItem;
 import searchcut.airr.searchview.model.SearchModelDto;
@@ -55,6 +55,8 @@ public class SearchView extends LinearLayout {
     private int textColorSearch;
     private String textHintSearch;
     private int searchLeftImg;
+    private boolean fuzzyShow = true;
+    private boolean currentPageShow = true;
 
     // 2. 搜索框设置：高度 & 颜色
     private int searchBlockHeight;
@@ -71,7 +73,6 @@ public class SearchView extends LinearLayout {
     private TextView tv_search;
     //模糊搜索
     private RecyclerView rv_fuzzy_check;
-    private boolean fuzzyShow = true;
     private FuzzyCheckAdapter fuzzyCheckAdapter;
     private SearchDataDto searchDataDto;
 
@@ -133,6 +134,8 @@ public class SearchView extends LinearLayout {
         fuzzyShow = typedArray.getBoolean(R.styleable.Search_View_fuzzyShow, true);
         // 更换搜索框左侧图标
         searchLeftImg = typedArray.getResourceId(R.styleable.Search_View_searchLeftImg, R.drawable.search);
+        // 是否在当前页展示结果
+        currentPageShow = typedArray.getBoolean(R.styleable.Search_View_currentPageShow, true);
 
         // 释放资源
         typedArray.recycle();
@@ -218,7 +221,7 @@ public class SearchView extends LinearLayout {
 
     }
 
-    private void toSearch() {
+    public void toSearch() {
         // 1. 点击搜索按键后，根据输入的搜索字段进行查询
         // 注：由于此处需求会根据自身情况不同而不同，所以具体逻辑由开发者自己实现，此处仅留出接口
         if (!(mCallBack == null)) {
@@ -237,7 +240,8 @@ public class SearchView extends LinearLayout {
         rv_date.postDelayed(new Runnable() {
             @Override
             public void run() {
-                rv_date.setVisibility(GONE);
+                rv_date.setVisibility(currentPageShow ? GONE : VISIBLE);
+                rv_fuzzy_check.setVisibility(GONE);
             }
         }, 100);
     }
@@ -335,7 +339,7 @@ public class SearchView extends LinearLayout {
                 deleteData();
                 // 模糊搜索空字符 = 显示所有的搜索历史（此时是没有搜索记录的）
                 queryData();
-                rv_date.setVisibility(GONE);
+                rv_date.setVisibility(currentPageShow ? GONE : VISIBLE);
             }
         });
 
@@ -346,13 +350,13 @@ public class SearchView extends LinearLayout {
             }
         });
 
-        dataAdapter.addList(searchDataDto.getViews(listOtherData));
+        dataAdapter.addList(AssembleDataUtil.getViews(listOtherData, searchDataDto));
 
     }
 
     private void toSearchChangeUI(String string) {
         et_search.setText(string);
-        rv_date.setVisibility(GONE);
+        rv_date.setVisibility(currentPageShow ? GONE : VISIBLE);
         toSearch();
     }
 
@@ -389,34 +393,37 @@ public class SearchView extends LinearLayout {
     /**
      * 点击键盘中搜索键后的操作，用于接口回调
      */
-    public void setOnClickSearch(ICallBack mCallBack) {
+    public SearchView setOnClickSearch(ICallBack mCallBack) {
         this.mCallBack = mCallBack;
-
+        return this;
     }
 
     /**
      * 设置搜索框的背景
      */
-    public void setAllBackground(int background) {
+    public SearchView setAllBackground(int background) {
         search_block.setBackgroundResource(background);
-
+        return this;
     }
 
     /**
      * 设置输入框的背景
      */
-    public void setEdtBackground(int background) {
+    public SearchView setEdtBackground(int background) {
         et_search.setBackgroundResource(background);
+        return this;
     }
 
     /**
      * 自定义输入框右侧布局
      *
-     * @param layout
+     * @param view
      */
-    public void setRightLayout(int layout) {
-        replaceView(R.id.ll_end_view, LayoutInflater.from(context).inflate(layout, null, false));
+    public SearchView setRightLayout(View view) {
+        replaceView(R.id.ll_end_view, view);
+        return this;
     }
+
 
     /**
      * 设置右侧固定布局的margin
@@ -426,10 +433,11 @@ public class SearchView extends LinearLayout {
      * @param right
      * @param bottom
      */
-    public void setRightMargin(int left, int top, int right, int bottom) {
+    public SearchView setRightMargin(int left, int top, int right, int bottom) {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);//宽高
         layoutParams.setMargins(left, top, right, bottom);//4个参数按顺序分别是左上右下
         tv_search.setLayoutParams(layoutParams);
+        return this;
     }
 
     /**
@@ -437,9 +445,10 @@ public class SearchView extends LinearLayout {
      *
      * @param show
      */
-    public void setFuzzyShow(boolean show) {
+    public SearchView setFuzzyShow(boolean show) {
         fuzzyShow = show;
         rv_fuzzy_check.setVisibility(show ? VISIBLE : GONE);
+        return this;
     }
 
     /**
@@ -447,7 +456,7 @@ public class SearchView extends LinearLayout {
      *
      * @param list
      */
-    public void setFuzzyData(List<String> list) {
+    public SearchView setFuzzyData(List<String> list) {
         db = helper.getWritableDatabase();
         db.execSQL("delete from fuzzys");
 
@@ -456,6 +465,7 @@ public class SearchView extends LinearLayout {
         }
 
         db.close();
+        return this;
     }
 
     /**
@@ -490,7 +500,7 @@ public class SearchView extends LinearLayout {
             });
         }
         listOtherData.add(new SearchItem(key, data));
-        dataAdapter.addList(searchDataDto.getViews(listOtherData));
+        dataAdapter.addList(AssembleDataUtil.getViews(listOtherData, searchDataDto));
         return this;
     }
 
@@ -501,6 +511,16 @@ public class SearchView extends LinearLayout {
      */
     public ClearEditText getEditText() {
         return et_search;
+    }
+
+    /**
+     * 是否在当前页展示搜索结果
+     *
+     * @param currentPageShow
+     */
+    public SearchView setCurrentPageShow(boolean currentPageShow) {
+        this.currentPageShow = currentPageShow;
+        return this;
     }
 
     private void replaceView(int id, View view) {

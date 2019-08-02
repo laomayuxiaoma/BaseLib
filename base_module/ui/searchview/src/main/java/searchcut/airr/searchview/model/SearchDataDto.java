@@ -2,19 +2,15 @@ package searchcut.airr.searchview.model;
 
 import android.view.View;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import searchcut.airr.searchview.ICallBack;
+import searchcut.airr.searchview.icallback.ICallBack;
 
 /**
  * @author wangfei
  * @date 2019/7/24.
  */
 public class SearchDataDto extends SearchModelDto {
-    public static String HISTORY_RECORD = "0";
-
-    private List<SearchItem> datas = new ArrayList<>();
 
     private String title;
     private List<String> data;
@@ -52,15 +48,6 @@ public class SearchDataDto extends SearchModelDto {
 
     public void setOnCallBackListener(ICallBack onCallBackListener) {
         this.onCallBackListener = onCallBackListener;
-    }
-
-    public List<SearchItem> getViews(List<SearchItem> list) {
-        datas.clear();
-        datas.add(new SearchItem(HISTORY_RECORD, this));
-        if (list != null && list.size() != 0) {
-            datas.addAll(list);
-        }
-        return datas;
     }
 
 }

@@ -9,7 +9,7 @@ import com.donkingliang.labels.LabelsView;
 
 import java.util.HashMap;
 
-import searchcut.airr.searchview.ICallBack;
+import searchcut.airr.searchview.icallback.ICallBack;
 import searchcut.airr.searchview.R;
 import searchcut.airr.searchview.databinding.ItemDataBinding;
 import searchcut.airr.searchview.model.SearchDataDto;
