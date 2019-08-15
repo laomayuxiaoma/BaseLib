@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">baseui</string>
+    <string name="add_shade">add_shade</string>
+    <string name="net_image_loading">net_image_loading</string>
 </resources>

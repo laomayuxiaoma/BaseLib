@@ -2,6 +2,9 @@ package com.mhd.baselib.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.adapter.StrsAdapter;
@@ -10,6 +13,8 @@ import com.mhd.baselib.view.view.FooterOne;
 import com.mhd.baselib.view.view.HeaderOne;
 import com.mhd.baselib.view.view.HeaderTwo;
 import com.mhd.baseui.dialog.GeneralDlg;
+import com.mhd.baseui.shade.NetImageLoading;
+import com.mhd.baseui.shade.util.ShadeUtil;
 import com.mhd.recyclerviewlib.SimpleRecycleView;
 
 import java.util.ArrayList;
@@ -21,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     private SimpleRecycleView rvList;
     private StrsAdapter mStrsAdapter;
+    private ShadeUtil mShadeUtil;
     private List<String> mDtos = new ArrayList<>();
+
+    private TextView mTvBottom;
 
     //测试使用
     private int i = 0;
@@ -31,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        String str = new String("dsf");
 //        GeneralDlg dlg = new GeneralDlg.Builder().setTitle("标题").setTitleCenter()
 //                .setMessage("测试测试测试测试测试测试测试测试测试测试测试测试测试测试" +
 //                        "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试")
@@ -75,10 +83,30 @@ public class MainActivity extends AppCompatActivity {
 //                rvList.postDelayed(this, 1000);
 //            }
 //        }, 2000);
+//        ShadeUtil util = new ShadeUtil(this);
+//        util.addShadeView(/*rvList,*/mTvBottom);
+
+//        mTvBottom.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                View view = findViewById(R.id.tv_bottom);
+//                Log.e("TTTTTTT333",mTvBottom+"|||"+view);
+//            }
+//        });
+        mShadeUtil = ShadeUtil.build()
+                .put(this.getResources().getString(R.string.net_image_loading), NetImageLoading.class)
+                .init(MainActivity.this);
+        rvList.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mShadeUtil.shadeDismiss();
+            }
+        },3000);
     }
 
     private void initView() {
         rvList = findViewById(R.id.rv_list);
+//        mTvBottom = findViewById(R.id.tv_bottom);
     }
 
     private void initData() {
@@ -86,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         mDtos.add("弹框");
         mDtos.add("TextView");
         mDtos.add("ImageView");
-        mDtos.add("测试5");
+        mDtos.add("加载前默认布局");
         mDtos.add("测试6");
         mDtos.add("测试7");
         mDtos.add("测试8");

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.view.activity.SearchDemo;
+import com.mhd.baselib.view.activity.TestDefaultLayoutActivity;
 import com.mhd.recyclerviewlib.adapter.BaseRecyclerAdapter;
 
 import java.util.HashMap;
@@ -46,10 +47,12 @@ public class StrsAdapter extends BaseRecyclerAdapter<String, StrsAdapter.ViewHol
 
     @Override
     protected void itemClick(Context context, String s, int position) {
-        Log.e("TTTTTTTTTTTTTTT",position+"|||");
+        //        Log.e("TTTTTTTTTTTTTTT",position+"|||");
         Toast.makeText(mContext, s, Toast.LENGTH_SHORT).show();
-        if ("搜索".equals(s)){
+        if ("搜索".equals(s)) {
             context.startActivity(new Intent().setClass(context, SearchDemo.class));
+        } else if (position == 4) {
+            context.startActivity(new Intent().setClass(context, TestDefaultLayoutActivity.class));
         }
     }
 

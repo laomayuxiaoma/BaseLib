@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:paddingLeft="15dp"
+    android:paddingTop="20dp"
+    android:paddingRight="15dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="@string/add_shade"
+        android:text="标题" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="10dp"
+        android:tag="@string/add_shade"
+        android:text="这里是一段描述性的文字"
+        android:textSize="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_43f2e9_14d2b8_3dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_center_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="@string/add_shade"
+            android:text="内部标题" />
+
+        <TextView
+            android:id="@+id/tv_center_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_center_title"
+            android:layout_marginTop="10dp"
+            android:tag="@string/add_shade"
+            android:text="这里是一段内部描述性的文字"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_head"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/rl_center"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/touxiang"
+        android:tag="@string/add_shade" />
+
+    <ImageView
+        android:id="@+id/img_hea"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/img_head"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/touxiang"
+        android:tag="@string/net_image_loading" />
+
+    <ImageView
+        android:id="@+id/img_he"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/img_hea"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/touxiang"
+        android:tag="@string/add_shade" />
+</RelativeLayout>

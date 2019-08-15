@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.SearchDemo"/>
+        <activity android:name=".view.activity.TestDefaultLayoutActivity"/>
     </application>
 
 </manifest>
