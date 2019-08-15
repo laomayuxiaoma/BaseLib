@@ -1,4 +1,4 @@
-package searchcut.airr.searchview;
+package searchcut.airr.searchview.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

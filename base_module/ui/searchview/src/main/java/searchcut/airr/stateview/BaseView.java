@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 
 import java.util.HashMap;
 
+import searchcut.airr.searchview.model.SearchModelDto;
+
 public abstract class BaseView<T, VB extends ViewDataBinding> implements LifecycleObserver {
 
     private HashMap<String, Class> viewConfigure = null;
@@ -39,6 +41,12 @@ public abstract class BaseView<T, VB extends ViewDataBinding> implements Lifecyc
     protected abstract void initListener(View view, boolean isUpdate);
 
     protected abstract void initViewConfigure(HashMap<String, Class> viewConfigure);
+
+    protected  void searchAciton (String string){
+        if (data != null && ((SearchModelDto)data).getCallBack() != null) {
+            ((SearchModelDto)data).getCallBack().SearchAciton(string);
+        }
+    }
 
     public void updateData(Object data) {
         this.data = (T) data;

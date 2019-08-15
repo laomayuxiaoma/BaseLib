@@ -2,13 +2,9 @@ package com.mhd.baselib.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.adapter.StrsAdapter;
-import com.mhd.baselib.dialog.TestDialog;
 import com.mhd.baselib.view.view.FooterOne;
 import com.mhd.baselib.view.view.HeaderOne;
 import com.mhd.baselib.view.view.HeaderTwo;
@@ -19,8 +15,6 @@ import com.mhd.recyclerviewlib.SimpleRecycleView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import searchcut.airr.searchview.SearchView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String str = new String("dsf");
+
 //        GeneralDlg dlg = new GeneralDlg.Builder().setTitle("标题").setTitleCenter()
 //                .setMessage("测试测试测试测试测试测试测试测试测试测试测试测试测试测试" +
 //                        "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试")
@@ -106,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         rvList = findViewById(R.id.rv_list);
-//        mTvBottom = findViewById(R.id.tv_bottom);
     }
 
     private void initData() {

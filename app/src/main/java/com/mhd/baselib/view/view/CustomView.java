@@ -6,16 +6,18 @@ import android.view.ViewGroup;
 
 import com.mhd.baselib.R;
 import com.mhd.baselib.databinding.ViewCustomBinding;
-import com.mhd.recyclerviewlib.stateView.BaseView;
 
 import java.util.HashMap;
+
+import searchcut.airr.searchview.model.SearchModelDto;
+import searchcut.airr.stateview.BaseView;
 
 
 /**
  * @author wangfei
  * @date 2019/7/30.
  */
-public class CustomView extends BaseView<Object, ViewCustomBinding> {
+public class CustomView extends BaseView<SearchModelDto, ViewCustomBinding> {
     public CustomView(Context context, Object data, ViewGroup parent) {
         super(context, data, parent);
     }
@@ -32,11 +34,16 @@ public class CustomView extends BaseView<Object, ViewCustomBinding> {
 
     @Override
     protected void initListener(View view, boolean isUpdate) {
-
+        mBinding.text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchAciton("点击成功");
+            }
+        });
     }
 
     @Override
-    protected BaseView.ConbinationBuilder combinationViewBuilder() {
+    protected ConbinationBuilder combinationViewBuilder() {
         return null;
     }
 
